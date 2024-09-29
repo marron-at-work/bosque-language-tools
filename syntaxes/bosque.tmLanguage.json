@@ -29,7 +29,7 @@
 							"name": "punctuation.definition.comment.bosque"
 						}
 					},
-					"begin": "//",
+					"begin": "%%",
 					"end": "$",
 					"name": "comment.line.double-dash.bosque"
 				},
@@ -39,8 +39,18 @@
 							"name": "punctuation.definition.comment.bosque"
 						}
 					},
-					"begin": "/\\*",
-					"end": "\\*/",
+					"begin": "%\\*\\*",
+					"end": "\\*%",
+					"name": "comment.multiline.double-dash.bosque"
+				},
+				{
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.comment.bosque"
+						}
+					},
+					"begin": "%\\*",
+					"end": "\\*%",
 					"name": "comment.multiline.double-dash.bosque"
 				}
 			]
@@ -62,7 +72,28 @@
 			"patterns": [
 				{
 					"name": "constant.character.escape.bosque",
-					"match": "\\\\."
+					"match": "'"
+				}
+			]
+		},
+		"string-single": {
+			"name": "string.quoted.single.bosque",
+			"begin": "'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin.bosque"
+				}
+			},
+			"end": "'",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end.bosque"
+				}
+			},
+			"patterns": [
+				{
+					"name": "constant.character.escape.bosque",
+					"match": "\""
 				}
 			]
 		},
@@ -70,11 +101,11 @@
 			"patterns": [
 				{
 					"name": "keyword.control.bosque",
-					"match": "\\b(#if|#else|#endif|_debug|abort|assert|callwith|elif|else|ensures|if|invariant|match|release|resultwith|return|requires|spec|switch|debug|test|then|validate)\\b"
+					"match": "\\b(abort|assert|if|elif|else|fn|pred|let|match|ref|return|switch|then|var|yield|ensures|invariant|example|requires|validate|softcheck|errtest|chektest)\\b"
 				},
 				{
 					"name": "keyword.bosque",
-					"match": "\\b(#if|#else|#endif|recursive?|recursive|action|_debug|abort|assert|callwith|concept|const|elif|else|enum|environment|entity|ensures|err|field|fn|function|function|if|import|invariant|in|let|match|method|namespace|of|ok|operator|pred|provides|ref|release|resultwith|return|requires|something|spec|doc|switch|task|debug|test|then|typedef|typedecl|datatype|using|validate|var|when|logmsg|eventmsg|statusmsg|format)\\b"
+					"match": "\\b(recursive?|recursive|action|_debug|abort|assert|bsqon|example|do|if|elif|else|fail|fn|pred|implements|let|match|ref|return|switch|then|type|var|yield|debug|release|safety|spec|test|api|as|concept|const|declare|enum|entity|ensures|field|function|invariant|method|namespace|of|provides|requires|in|task|datatype|using|validate|when|event|status|resource|predicate|softcheck|errtest|chektest|operator|variant)\\b"
 				}
 			]
 		},
@@ -82,19 +113,23 @@
 			"patterns": [
 				{
 					"name": "constant.numeric.bosque",
-					"match": "\\b((0|[1-9][0-9]*)(n|i|N|I)_([A-Z][_a-zA-Z0-9]+))|(0|[1-9][0-9]*)/(0|[1-9][0-9]*)R(_([A-Z][_a-zA-Z0-9]+))|([0-9]+(\\.[0-9]+)?|\\.[0-9]+)([eE][-+]?[0-9]+)?(_([A-Z][_a-zA-Z0-9]+))\\b"
+					"match": "\\b(([0-9]+)[inIN])\\b"
 				},
 				{
 					"name": "constant.numeric.bosque",
-					"match": "\\b((0|[1-9][0-9]*)(n|i|N|I))|((0|[1-9][0-9]*)/(0|[1-9][0-9]*)R)|(([0-9]+(\\.[0-9]+)?|\\.[0-9]+)([eE][-+]?[0-9]+)?(f|d))\\b"
+					"match": "\\b((([0-9]+))[R]|(([0-9]+)/([0-9]+)[R]))\\b"
 				},
 				{
 					"name": "constant.numeric.bosque",
-					"match": "\\b(0|[1-9][0-9]*)\\b"
+					"match": "\\b(([0-9]+.[0-9]+([eE][-+]?[0-9]+)?[fd]))\\b"
+				},
+				{
+					"name": "constant.numeric.bosque",
+					"match": "\\b([0-9]+)\\b"
 				},
 				{
 					"name": "constant.language",
-					"match": "\\b(none|nothing|true|false|err|ok|some|something|result)\\b"
+					"match": "\\b(none|true|false|fail|ok|some|result|option|env|this|self)\\b"
 				}
 			]
 		},
