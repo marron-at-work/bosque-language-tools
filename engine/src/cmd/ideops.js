@@ -42,7 +42,9 @@ function workflowLoadUserSrc(files) {
     try {
         let code = [];
         for (let i = 0; i < files.length; ++i) {
-            code.push({ srcpath: files[i], filename: path.basename(files[i]), contents: fs.readFileSync(files[i]).toString() });
+            if (!files[i].includes("BosqueCore/src/core") && !files[i].includes("BosqueCore/src/samples")) {
+                code.push({ srcpath: files[i], filename: path.basename(files[i]), contents: fs.readFileSync(files[i]).toString() });
+            }
         }
         return code;
     }
