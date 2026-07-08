@@ -9,7 +9,9 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:bosque"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "languages": [
@@ -20,7 +22,8 @@
           "bosque"
         ],
         "extensions": [
-          ".bsq"
+          ".bsq",
+          ".bsqtest"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -46,6 +49,9 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test"
+  },
+  "dependencies": {
+    "@bosque/jsbrex": "^0.16.0"
   },
   "devDependencies": {
     "@types/vscode": "^1.124.0",
